@@ -2,8 +2,6 @@
 """
 Fabfile to generate then share an archive to a web server
 using the function deploy:
-
-fab -f 3-deploy_web_static.py deploy -i ~/.ssh/school -u ubuntu
 """
 import os.path
 from datetime import datetime
@@ -16,7 +14,7 @@ env.hosts = ["34.202.159.246", "54.208.173.202"]
 
 
 def do_pack():
-    """Create a tar gzipped archive of the directory web_static."""
+    """Generate a tar gzipped archive of the directory web_static."""
     dt = datetime.utcnow()
     file = "versions/web_static_{}{}{}{}{}{}.tgz".format(dt.year,
                                                          dt.month,
@@ -33,7 +31,7 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """Distributes an archive to a web server.
+    """It shares an archive to a web server.
     Args:
         archive_path (str): The path of the archive to distribute.
     Returns:
