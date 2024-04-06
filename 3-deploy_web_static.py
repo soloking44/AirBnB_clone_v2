@@ -2,6 +2,8 @@
 """
 Fabfile to generate then share an archive to a web server
 using the function deploy:
+
+fab -f 3-deploy_web_static.py deploy -i ~/.ssh/school -u ubuntu
 """
 import os.path
 from datetime import datetime
