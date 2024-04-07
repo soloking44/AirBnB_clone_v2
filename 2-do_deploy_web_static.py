@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# this is a fabric script that runs properties of web_static
+# this is a fabric script that 
+# runs properties of web_static
 # by using do_pack func 
 import os
 from fabric.api import run, put, env
