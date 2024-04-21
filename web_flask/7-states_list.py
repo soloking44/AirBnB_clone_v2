@@ -12,8 +12,8 @@ res = Flask(__name__)
 @res.route('/states_list', strict_slashes=False)
 def fun():
     """this outputs states in html accordingly"""
-    sts = sorted(list(storage.all("State").values()), key=lambda mn: mn.name)
-    return render_template('7-states_list.html', sts=sts)
+    states = sorted(list(storage.all("State").values()), key=lambda mn: mn.name)
+    return render_template('7-states_list.html', states=states)
 
 
 @res.teardown_appcontext
