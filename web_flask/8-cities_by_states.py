@@ -16,7 +16,7 @@ def fun():
     return render_template('8-cities_by_states.html', states=states)
 
 @res.teardown_appcontext
-def teardown_db(exception):
+def fun2(exception):
     """exit storage"""
     storage.close()
 

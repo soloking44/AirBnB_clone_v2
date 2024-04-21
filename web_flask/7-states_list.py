@@ -1,25 +1,26 @@
 #!/usr/bin/python3
+"""this intializes Flask web app
 """
-this initialize web flask
-"""
-
-from flask import Flask, render_template
-from models import *
 from models import storage
+from flask import Flask
+from flask import render_template
+
 res = Flask(__name__)
 
 
-@res.route('/states_list', strict_slashes=False)
+@res.route("/states_list", strict_slashes=False)
 def fun():
-    """this outputs states in html accordingly"""
-    states = sorted(list(storage.all("State").values()), key=lambda mn: mn.name)
-    return render_template('7-states_list.html', states=states)
+    """this shows html page of state alphabetically.
+    """
+    states = storage.all("State")
+    return render_template("7-states_list.html", states=states)
 
 
 @res.teardown_appcontext
-def fun2(exception):
-    """closes the storage on teardown"""
+def fun(xy):
+    """this exits sql session"""
     storage.close()
 
-if __name__ == '__main__':
-    res.run(host='0.0.0.0', port='5000')
+
+if __name__ == "__main__":
+    res.run(host="0.0.0.0")
