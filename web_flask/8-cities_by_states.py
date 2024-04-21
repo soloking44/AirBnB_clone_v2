@@ -1,24 +1,25 @@
 #!/usr/bin/python3
+"""this starts flask web app
 """
-this is flask intialize
-"""
-
-from flask import Flask, render_template
-from models import *
 from models import storage
-res = Flask(__name__)
+from flask import Flask
+from flask import render_template
+
+app = Flask(__name__)
 
 
-@res.route('/cities_by_states', strict_slashes=False)
-def fun():
-    """list state accordingly"""
-    states = storage.all("State").values()
-    return render_template('8-cities_by_states.html', states=states)
+@app.route("/cities_by_states", strict_slashes=False)
+def cities_by_states():
+    """this shows html page for states"""
+    states = storage.all("State")
+    return render_template("8-cities_by_states.html", states=states)
 
-@res.teardown_appcontext
-def fun2(exception):
-    """exit storage"""
+
+@app.teardown_appcontext
+def teardown(xy):
+    """this destroys session"""
     storage.close()
 
-if __name__ == '__main__':
-    res.run(host='0.0.0.0', port='5000')
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")

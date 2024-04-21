@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" this starts the flask web app """
-
+"""this starts flask web app
+"""
 from models import storage
 from flask import Flask
 from flask import render_template
@@ -10,14 +10,14 @@ app = Flask(__name__)
 
 @app.route("/states_list", strict_slashes=False)
 def states_list():
-    """ it displays state name alphabetically """
+    """this shows html page for states"""
     states = storage.all("State")
     return render_template("7-states_list.html", states=states)
 
 
 @app.teardown_appcontext
-def teardown(exc):
-    """it closes current session"""
+def teardown(xy):
+    """this destroys session"""
     storage.close()
 
 
