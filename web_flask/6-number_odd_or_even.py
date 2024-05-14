@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-flask app
+this is the flask app
 """
 
 from flask import Flask, render_template
