@@ -1,58 +1,58 @@
 #!/usr/bin/python3
 """
-this is the flask app
+this start Flask application
 """
 
 from flask import Flask, render_template
-res = Flask(__name__)
+app = Flask(__name__)
 
 
-@res.route('/', strict_slashes=False)
-def fun():
-    """Hello HBNB!"""
+@app.route('/', strict_slashes=False)
+def index():
+    """returns Hello HBNB!"""
     return 'Hello HBNB!'
 
 
-@res.route('/hbnb', strict_slashes=False)
-def fun1():
-    """HBNB"""
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """returns HBNB"""
     return 'HBNB'
 
 
-@res.route('/c/<text>', strict_slashes=False)
-def fun2(text):
-    """shows C and text var"""
+@app.route('/c/<text>', strict_slashes=False)
+def cisfun(text):
+    """display “C ” followed by the value of the text variable"""
     return 'C ' + text.replace('_', ' ')
 
 
-@res.route('/python', strict_slashes=False)
-@res.route('/python/<text>', strict_slashes=False)
-def fun3(text='is cool'):
-    """shows py and text var"""
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def pythoniscool(text='is cool'):
+    """display “Python ”, followed by the value of the text variable"""
     return 'Python ' + text.replace('_', ' ')
 
 
-@res.route('/number/<int:n>', strict_slashes=False)
-def fun4(n):
-    """shows n when n is an int"""
+@app.route('/number/<int:n>', strict_slashes=False)
+def imanumber(n):
+    """display “n is a number” only if n is an integer"""
     return "{:d} is a number".format(n)
 
 
-@res.route('/number_template/<int:n>', strict_slashes=False)
-def fun5(n):
-    """shows html page when n is an int"""
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def numbersandtemplates(n):
+    """display a HTML page only if n is an integer"""
     return render_template('5-number.html', n=n)
 
 
-@res.route('/number_odd_or_even/<int:n>', strict_slashes=False)
-def fun6(n):
-    """shows html page when n is an integer"""
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def numbersandevenness(n):
+    """display a HTML page only if n is an integer"""
     if n % 2 == 0:
-        numEven = 'even'
+        evenness = 'even'
     else:
-        numEven = 'odd'
+        evenness = 'odd'
     return render_template('6-number_odd_or_even.html', n=n,
-                           numEven=numEven)
+                           evenness=evenness)
 
 if __name__ == '__main__':
-    res.run(host='0.0.0.0', port='5000')
+    app.run(host='0.0.0.0', port='5000')
